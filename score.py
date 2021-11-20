@@ -48,3 +48,26 @@ fig.add_trace(go.Scatter(x=[third_sd_start,third_sd_start], y=[0,0.17],mode = "l
 fig.add_trace(go.Scatter(x=[third_sd_end,third_sd_end], y=[0,0.17],mode = "lines", name = "sd3_end"))
 
 fig.show()
+
+df = pd.read_csv("data.csv")
+data = df["reading_time"].tolist()
+meanOfSample1 = statistics.mean(data)
+print("Mean of Sample1:",meanOfSample1)
+
+fig = ff.create_distplot([meanList],[mean],show_hist = False)
+fig.add_trace(go.Scatter(x=[mean,mean], y=[0,0,17],mode = "lines", name = "mean"))
+fig.add_trace(go.Scatter(x=[meanOfSample1,meanOfSample1], y=[0,0,17],mode = "lines", name = "mean of students who had math lab"))
+
+# fig.add_trace(go.Scatter(x=[first_sd_start,first_sd_start], y=[0,0.17],mode = "lines", name = "sd1_start"))
+fig.add_trace(go.Scatter(x=[first_sd_end,first_sd_end], y=[0,0.17],mode = "lines", name = "sd_end"))
+
+# fig.add_trace(go.Scatter(x=[second_sd_start,second_sd_start], y=[0,0.17],mode = "lines", name = "sd2_start"))
+fig.add_trace(go.Scatter(x=[second_sd_end,second_sd_end], y=[0,0.17],mode = "lines", name = "sd2_end"))
+
+# fig.add_trace(go.Scatter(x=[third_sd_start,third_sd_start], y=[0,0.17],mode = "lines", name = "sd3_start"))
+fig.add_trace(go.Scatter(x=[third_sd_end,third_sd_end], y=[0,0.17],mode = "lines", name = "sd3_end"))
+
+fig.show()
+
+zscore = (mean - meanOfSample1)/sd
+print("Z-Score:",zscore)
